@@ -3,7 +3,7 @@ import 'package:mangaplay/models/manga.dart';
 
 
 class MangaProvider with ChangeNotifier {
-  final List<Manga> _watchedModel = [];
+  final List<Manga> _watchedModel = [Manga(mangaGenres: '',mangaTitle:'', mangaImageUrl: '', mangaYear: '', mangaDescription: ''),];
 
   List<Manga> get watchedModel => _watchedModel;
 
@@ -12,5 +12,9 @@ class MangaProvider with ChangeNotifier {
       _watchedModel.add(manga);
       notifyListeners();
     }
+  }
+    void removeManga(Manga manga) {
+    _watchedModel.remove(manga);
+    notifyListeners(); // Уведомляем слушателей о изменениях
   }
 }

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:mangaplay/models/manga.dart';
 import 'package:mangaplay/pages/book_page.dart';
 import 'package:mangaplay/pages/detail_manga_page.dart';
+import 'package:mangaplay/pages/profile_page.dart';
+import 'package:mangaplay/pages/setting_page.dart';
 import 'package:mangaplay/widgets/card_widget.dart';
 import 'package:mangaplay/widgets/search_card_widget.dart';
-import 'package:mangaplay/widgets/small_hits_card.dart';
+import 'package:mangaplay/widgets/small_card.dart';
 import 'package:mangaplay/widgets/small_new_card_widget.dart';
 
 class MenuPage extends StatefulWidget {
@@ -90,7 +92,7 @@ class _MenuPageState extends State<MenuPage> {
               leading: const Icon(Icons.home, color: Colors.white),
               title: const Text('Главная', style: TextStyle(color: Colors.white)),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.of(context).pushNamed(MenuPage.routeName);
               },
             ),
             ListTile(
@@ -104,7 +106,7 @@ class _MenuPageState extends State<MenuPage> {
               leading: const Icon(Icons.people, color: Colors.white),
               title: const Text('Профиль', style: TextStyle(color: Colors.white)),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.of(context).pushNamed(ProfilePage.routeName);
               },
             ),
             const SizedBox(height: 550),
@@ -112,7 +114,7 @@ class _MenuPageState extends State<MenuPage> {
               leading: const Icon(Icons.settings, color: Colors.white),
               title: const Text('Настройки', style: TextStyle(color: Colors.white)),
               onTap: () {
-                Navigator.pop(context); // Закрыть меню
+                Navigator.of(context).pushNamed(SettingPage.routeName);
               },
             ),
           ],

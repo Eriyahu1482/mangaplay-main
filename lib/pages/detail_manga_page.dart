@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mangaplay/models/manga.dart';
-import 'package:mangaplay/pages/menu_page.dart';
 import 'package:mangaplay/services/manga_provider.dart';
 import 'package:mangaplay/widgets/main_button.dart';
 import 'package:provider/provider.dart';
@@ -37,9 +36,9 @@ return Scaffold(
                 height: 400,
                 color: Colors.transparent,
                 child: GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pushNamed(MenuPage.routeName);
-                  },
+  onTap: () {
+    Navigator.pop(context); 
+  },
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -87,29 +86,33 @@ return Scaffold(
                 //Descriptions
                 child: Column(
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(right: 160),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 160),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
-                          Text('Годы выхода: 2020',
-                              style: TextStyle(
-                                color: Color.fromRGBO(255, 255, 255, 1),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                              )),
-                          SizedBox(
+                          Row(
+                            children: [
+                              const Text('Годы выхода:',
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(255, 255, 255, 1),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  )),
+                                  Text(widget.manga.mangaYear,
+                                  style: const TextStyle(
+                                    color: Color.fromRGBO(255, 255, 255, 1),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  )),
+                            ],
+                          ),
+                          const SizedBox(
                             height: 20,
                           ),
-                          Text('Эпизоды: 12',
-                              style: TextStyle(
-                                color: Color.fromRGBO(255, 255, 255, 1),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                              )),
                         ],
                       ),
                     ),
@@ -144,10 +147,10 @@ return Scaffold(
                             margin: EdgeInsets.zero,
                             width: 310,
                             height: 190,
-                            child: const SingleChildScrollView(
+                            child:  SingleChildScrollView(
                                 child: Text(
-                                    'Город под названием Дыра, как ни странно, настоящая... дыра. Обитают в нём тоже не самые приятные личности. Однако на их взгляд, есть кое-кто ещё более мерзкий и отвратительный — маги. Эти ребята, как несложно догадаться, владеют магией. А дурную репутацию они заслужили благодаря бесчеловечным опытам, которые проводят на несчастных гражданах трущоб, вторгаясь в их город из своего мира через магическую дверь. Так и живут — и те и другие, постоянно ранясь об обоюдоострую ненависть.Кайман тоже житель Дыры, оказавшийся в непростой ситуации. Однажды став жертвой неизвестного мага, он потерял память и прежний облик. На месте нормальной человеческой головы теперь красуется безобразная рожа рептилии. Отсюда и имя соответствующее, раз уж настоящее позабыл.Вместе с верной и чертовски сильной подругой по имени Никайдо новоиспеченный «представитель» рода пресмыкающихся не собирается сидеть сложа руки. Его цель — продираясь сквозь грязь Дыры и обливаясь литрами крови, вернуть утраченные внешность и память. Но для этого нужно сперва найти виновного и отделать его по полной! Так отделать, что даже до смерти!',
-                                    style: TextStyle(
+                                    widget.manga.mangaDescription,
+                                    style: const TextStyle(
                                         fontSize: 14,
                                         color: Colors.white,
                                         fontWeight: FontWeight.w500))),
